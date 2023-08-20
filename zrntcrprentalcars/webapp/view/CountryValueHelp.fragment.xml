@@ -1,0 +1,24 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:c="sap.ui.core"
+>
+
+<SelectDialog
+		id="CountryValueHelp"
+		contentHeight="50%"
+		title="{i18n>addCountryName}"
+		items="{/ZRNTCRI_COUNTRY}"
+		search=".onSuggestionItemSelected"
+		confirm=".onValueHelpDialogClose"
+		cancel=".onValueHelpClose"
+	>
+		<StandardListItem
+			id="StandardListItem"
+			iconDensityAware="false"
+			iconInset="false"
+			title="{CountryId}"
+			description="{CountryName}"
+		/>
+	</SelectDialog>
+
+</c:FragmentDefinition>

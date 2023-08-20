@@ -1,0 +1,146 @@
+{
+  "_version": "1.37.0",
+  "sap.app": {
+    "id": "zrntcrprentalcars",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.3",
+      "toolsId": "a1df8756-93c0-4109-b48b-e918db5cf273"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/sap/ZRNTCRP_RENTALCARS_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.96.6",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "zrntcrprentalcars.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "zrntcrprentalcars.view",
+        "controlAggregation": "beginColumnPages",
+        "controlId": "layout"
+      },
+      "routes": [
+        {
+          "name": "RouteView1",
+          "pattern": ":?query:",
+          "target": [
+            "TargetView1"
+          ]
+        },
+        {
+          "name": "RouteBrands",
+          "pattern": "brands",
+          "target": [
+            "TargetBrands"
+          ]
+        },
+        {
+          "name": "RouteVehicles",
+          "pattern": "vehicles/{BrandId}",
+          "target": [
+            "TargetBrands", "TargetVehicles"
+          ]
+        }
+
+      ],
+      "targets": {
+        "TargetView1": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "View1",
+          "viewName": "View1"
+        },
+        "TargetBrands": {
+          "viewLevel": 1,
+          "viewId": "Brands",
+          "viewName": "Brands"
+        },
+      "TargetVehicles": {
+        "viewLevel": 1,
+        "viewId": "Vehicles",
+        "viewName": "Vehicles",
+        "controlAggregation": "midColumnPages"
+      }
+      }
+    },
+    "rootView": {
+      "viewName": "zrntcrprentalcars.view.App",
+      "type": "XML",
+      "async": true,
+      "id": "App"
+    }
+  }
+}
